@@ -13,7 +13,7 @@ public class TestClass {
 		Util.type(ObjectRepo.amazonSearchBox, "VR");
 		Util.click(ObjectRepo.amazonSearchButton);
 		String currentUrl = InitializeWebDriver.getCurrentUrl();
-		
+
 		spider.search(currentUrl, "Oculus");
 
 	}
