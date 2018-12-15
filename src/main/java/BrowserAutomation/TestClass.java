@@ -9,12 +9,10 @@ public class TestClass {
 		Spider spider = new Spider();
 
 		InitializeWebDriver.setUp();
-		InitializeWebDriver.goToUrl("https://www.amazon.com");
-		Util.type(ObjectRepo.amazonSearchBox, "VR");
-		Util.click(ObjectRepo.amazonSearchButton);
+		InitializeWebDriver.goToUrl("https://www.reddit.com");
 		String currentUrl = InitializeWebDriver.getCurrentUrl();
 
-		spider.search(currentUrl, "Oculus");
+		spider.search(currentUrl, "Trump");
 
 	}
 

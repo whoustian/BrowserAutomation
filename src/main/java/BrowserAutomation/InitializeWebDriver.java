@@ -16,6 +16,10 @@ public class InitializeWebDriver {
 		driver.manage().window().maximize();
 	}
 
+	public static WebDriver getDriver() {
+		return driver;
+	}
+
 	public static void goToUrl(String url) {
 		driver.get(url);
 	}
