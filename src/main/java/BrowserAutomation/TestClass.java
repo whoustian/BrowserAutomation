@@ -1,5 +1,6 @@
 package BrowserAutomation;
 
+import Selenium.SeleniumWebDriver;
 import WebCrawlerPackage.Spider;
 
 public class TestClass {
@@ -8,9 +9,9 @@ public class TestClass {
 
 		Spider spider = new Spider();
 
-		InitializeWebDriver.setUp();
-		InitializeWebDriver.goToUrl("https://www.reddit.com");
-		String currentUrl = InitializeWebDriver.getCurrentUrl();
+		SeleniumWebDriver.setUp();
+		SeleniumWebDriver.goToUrl("https://www.reddit.com");
+		String currentUrl = SeleniumWebDriver.getCurrentUrl();
 
 		spider.search(currentUrl, "Trump");
 
