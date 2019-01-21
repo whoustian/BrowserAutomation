@@ -1,7 +1,9 @@
 package BrowserAutomation;
 
 import java.io.File;
+import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.BasicConfigurator;
 import org.junit.After;
 import org.junit.Before;
@@ -29,7 +31,8 @@ public class TestClass {
 			extent.attachReporter(reporter);
 			ExtentTest test = extent.createTest("MyFirstTest", "Test Description").pass("details");
 			SeleniumWebDriver.goToUrl("https://www.reddit.com");
-			test.pass("Went to URL").addScreenCaptureFromPath("reddit.png");
+			test.pass("Went to URL")
+					.addScreenCaptureFromPath("C://Users//Will//Pictures//UnderstandingTheBlueWhale_whale.png");
 			Util.type(ObjectRepo.reddit_SearchBox, "Trump");
 			test.pass("Search typed");
 			extent.flush();
@@ -57,8 +60,14 @@ public class TestClass {
 		test.pass("Search typed");
 	}
 
-	public static byte[] makeScreenShot() {
-		return ((TakesScreenshot) SeleniumWebDriver.getDriver()).getScreenshotAs(OutputType.BYTES);
+	public static void takeScreenShot() {
+		try {
+			File scrFile = ((TakesScreenshot) SeleniumWebDriver.getDriver()).getScreenshotAs(OutputType.FILE);
+			((TakesScreenshot) SeleniumWebDriver.getDriver()).getScreenshotAs(OutputType.BYTES);
+			FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Before
