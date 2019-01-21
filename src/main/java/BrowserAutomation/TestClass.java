@@ -10,8 +10,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import Selenium.SeleniumWebDriver;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
 
 @RunWith(JUnit4.class)
 public class TestClass {
@@ -25,15 +23,12 @@ public class TestClass {
 		}
 	}
 
-	@Step("Open Reddit and Search for a word")
 	public static void testSomething() throws Exception {
 		SeleniumWebDriver.goToUrl("https://www.reddit.com");
 		makeScreenShot();
 		Util.type(ObjectRepo.reddit_SearchBox, "Trump");
 	}
 
-	@Attachment
-	@Step("Make screen shot of results page")
 	public static byte[] makeScreenShot() {
 		return ((TakesScreenshot) SeleniumWebDriver.getDriver()).getScreenshotAs(OutputType.BYTES);
 	}

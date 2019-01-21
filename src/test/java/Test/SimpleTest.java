@@ -15,16 +15,9 @@ import org.openqa.selenium.TakesScreenshot;
 import BrowserAutomation.ObjectRepo;
 import BrowserAutomation.Util;
 import Selenium.SeleniumWebDriver;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
-import ru.yandex.qatools.allure.annotations.Title;
 
-@Title("Search for Something on Reddit")
 public class SimpleTest {
 
-	@Title("Search for Something on Reddit")
-	@Description("This is a test about reddit searches")
 	@Test
 	public void runner() {
 		try {
@@ -34,7 +27,6 @@ public class SimpleTest {
 		}
 	}
 
-	@Step("Open Reddit and Search for a word")
 	public static void searchOnReddit(String keyword) throws Exception {
 		SeleniumWebDriver.goToUrl("https://www.reddit.com");
 		Thread.sleep(2000);
@@ -46,8 +38,6 @@ public class SimpleTest {
 		makeScreenShot();
 	}
 
-	@Attachment
-	@Step("Make screen shot of the current page")
 	public static byte[] makeScreenShot() {
 		return ((TakesScreenshot) SeleniumWebDriver.getDriver()).getScreenshotAs(OutputType.BYTES);
 	}
@@ -61,7 +51,6 @@ public class SimpleTest {
 	@After
 	public void finalize() {
 		SeleniumWebDriver.closeBroswer();
-		generateReport();
 		openReportDirectory();
 	}
 
@@ -73,14 +62,4 @@ public class SimpleTest {
 		}
 	}
 
-	public static void generateReport() {
-		try {
-			Process p = Runtime.getRuntime().exec(
-					"cmd /c start C://Users//Will//workspace//BrowserAutomation//src//main//resources//report.bat",
-					null, new File("C://Users//Will//workspace//BrowserAutomation"));
-			p.waitFor();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
