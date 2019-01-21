@@ -6,5 +6,6 @@ public class ObjectRepo {
 
 	public static final By amazonSearchBox = By.id("twotabsearchtextbox");
 	public static final By amazonSearchButton = By.xpath("(//*[@type='submit'])[1]");
+	public static final By reddit_SearchBar = By.id("header-search-bar");
 
 }
