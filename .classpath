@@ -33,5 +33,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/Selenium"/>
+	<classpathentry kind="lib" path="C:/Users/Will/workspace/Selenium/target/Selenium-0.0.1-SNAPSHOT-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

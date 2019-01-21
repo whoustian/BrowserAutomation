@@ -29,7 +29,7 @@ public class TestClass {
 	public static void testSomething() throws Exception {
 		SeleniumWebDriver.goToUrl("https://www.reddit.com");
 		makeScreenShot();
-		Util.type(ObjectRepo.reddit_SearchBar, "Trump");
+		Util.type(ObjectRepo.reddit_SearchBox, "Trump");
 	}
 
 	@Attachment
