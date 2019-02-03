@@ -15,7 +15,6 @@ import org.openqa.selenium.TakesScreenshot;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentAventReporter;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import Selenium.SeleniumWebDriver;
@@ -42,7 +41,7 @@ public class TestClass {
 	}
 
 	public static ExtentTest createNewTest() {
-		ExtentAventReporter avent = new ExtentAventReporter("C://ResultsRepository");
+		ExtentHtmlReporter avent = new ExtentHtmlReporter("C://ResultsRepository");
 
 		ExtentReports extent = new ExtentReports();
 		extent.attachReporter(avent);
