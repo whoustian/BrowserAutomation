@@ -9,22 +9,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 import BrowserAutomation.ObjectRepo;
-import BrowserAutomation.Util;
 import Selenium.SeleniumWebDriver;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
-import ru.yandex.qatools.allure.annotations.Title;
 
-@Title("Search for Something on Reddit")
 public class SimpleTest {
 
-	@Title("Search for Something on Reddit")
-	@Description("This is a test about reddit searches")
 	@Test
 	public void runner() {
 		try {
@@ -34,22 +24,10 @@ public class SimpleTest {
 		}
 	}
 
-	@Step("Open Reddit and Search for a word")
 	public static void searchOnReddit(String keyword) throws Exception {
 		SeleniumWebDriver.goToUrl("https://www.reddit.com");
-		Thread.sleep(2000);
-		makeScreenShot();
-		Util.type(ObjectRepo.reddit_SearchBox, keyword);
-		Thread.sleep(2000);
-		Util.sendKeys(ObjectRepo.reddit_SearchBox, Keys.ENTER);
-		Thread.sleep(2000);
-		makeScreenShot();
-	}
-
-	@Attachment
-	@Step("Make screen shot of the current page")
-	public static byte[] makeScreenShot() {
-		return ((TakesScreenshot) SeleniumWebDriver.getDriver()).getScreenshotAs(OutputType.BYTES);
+		ObjectRepo.reddit_SearchBox.setValue(keyword);
+		ObjectRepo.reddit_SearchBox.sendKeys(Keys.ENTER);
 	}
 
 	@Before
@@ -60,8 +38,7 @@ public class SimpleTest {
 
 	@After
 	public void finalize() {
-		SeleniumWebDriver.closeBroswer();
-		generateReport();
+		SeleniumWebDriver.closeBrowser();
 		openReportDirectory();
 	}
 
@@ -73,14 +50,4 @@ public class SimpleTest {
 		}
 	}
 
-	public static void generateReport() {
-		try {
-			Process p = Runtime.getRuntime().exec(
-					"cmd /c start C://Users//Will//workspace//BrowserAutomation//src//main//resources//report.bat",
-					null, new File("C://Users//Will//workspace//BrowserAutomation"));
-			p.waitFor();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
