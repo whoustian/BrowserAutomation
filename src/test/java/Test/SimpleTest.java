@@ -9,11 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 import BrowserAutomation.ObjectRepo;
-import BrowserAutomation.Util;
 import Selenium.SeleniumWebDriver;
 
 public class SimpleTest {
@@ -29,17 +26,8 @@ public class SimpleTest {
 
 	public static void searchOnReddit(String keyword) throws Exception {
 		SeleniumWebDriver.goToUrl("https://www.reddit.com");
-		Thread.sleep(2000);
-		makeScreenShot();
-		Util.type(ObjectRepo.reddit_SearchBox, keyword);
-		Thread.sleep(2000);
-		Util.sendKeys(ObjectRepo.reddit_SearchBox, Keys.ENTER);
-		Thread.sleep(2000);
-		makeScreenShot();
-	}
-
-	public static byte[] makeScreenShot() {
-		return ((TakesScreenshot) SeleniumWebDriver.getDriver()).getScreenshotAs(OutputType.BYTES);
+		ObjectRepo.reddit_SearchBox.setValue(keyword);
+		ObjectRepo.reddit_SearchBox.sendKeys(Keys.ENTER);
 	}
 
 	@Before
@@ -50,7 +38,7 @@ public class SimpleTest {
 
 	@After
 	public void finalize() {
-		SeleniumWebDriver.closeBroswer();
+		SeleniumWebDriver.closeBrowser();
 		openReportDirectory();
 	}
 
